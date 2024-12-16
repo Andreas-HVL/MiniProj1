@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MiniProj.Functionality;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+
+namespace MiniProj.Models
+{
+    public class Company
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public ObjectId Id { get; set; }
+
+        [BsonElement("Name")]
+        public string Name { get; set; }
+
+        [BsonElement("Org Number")]
+        public string CompanyNo { get; set; }
+
+        [BsonElement("X")]
+        public string? TagX { get; set; } = null;
+    }
+
+    public class BlankCompany : Company
+    {
+        // Inherits all properties from Company
+    }
+}
