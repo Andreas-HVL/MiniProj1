@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using MiniProj.Functionality;
+using MiniProj.Models;
 
-namespace MiniProj.Models
+namespace MiniProj.Functionality
 {
     public static class DBImport
     {
@@ -19,8 +19,8 @@ namespace MiniProj.Models
         private static readonly IMongoCollection<BsonDocument> AppliedCollection = database.GetCollection<BsonDocument>("LIA-Applications");
 
         public static BlankCompany[]? blankCompanies { get; private set; }
-        public static Company[]? Companies { get; private set;}
-        public static AppliedAlready[]? AppliedAlreadies { get; private set;}
+        public static Company[]? Companies { get; private set; }
+        public static AppliedAlready[]? AppliedAlreadies { get; private set; }
 
 
         public static void LoadCompanies()
@@ -89,7 +89,7 @@ namespace MiniProj.Models
         public static void PrintSomething()
         {
             Console.WriteLine(blankCompanies[1].Id);
-            
+
         }
     }
 }

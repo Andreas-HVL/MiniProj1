@@ -1,5 +1,4 @@
-﻿using MiniProj.Models;
-using MiniProj.Functionality;
+﻿using MiniProj.Functionality;
 
 
 namespace MiniProj
