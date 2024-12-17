@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MiniProj.Functionality
 {
-    internal class Stuff
+    public static class MenuOptions
     {
+
     }
 }

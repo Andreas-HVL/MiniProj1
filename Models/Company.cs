@@ -21,8 +21,11 @@ namespace MiniProj.Models
         [BsonElement("Org Number")]
         public string CompanyNo { get; set; }
 
-        [BsonElement("X")]
-        public string? TagX { get; set; } = null;
+        [BsonElement("Rank")]
+        public string? Rank { get; set; } = null;
+
+        [BsonElement("Description")]
+        public string? Description { get; set; }
     }
 
     public class BlankCompany : Company

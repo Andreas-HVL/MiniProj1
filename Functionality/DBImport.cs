@@ -29,25 +29,26 @@ namespace MiniProj.Functionality
             {
                 // Fetch blank companies (TagX is null)
                 var blankDocs = CompaniesCollection
-                    .Find(Builders<BsonDocument>.Filter.Eq("X", BsonNull.Value))
+                    .Find(Builders<BsonDocument>.Filter.Eq("Rank", BsonNull.Value))
                     .ToList();
 
                 // Deserialize directly using BsonSerializer
                 blankCompanies = blankDocs
                     .Select(doc => BsonSerializer.Deserialize<BlankCompany>(doc))
+                    .OrderBy(doc => doc.Name)
                     .ToArray();
 
                 // Fetch regular companies (TagX is not null)
                 var regularDocs = CompaniesCollection
-                    .Find(Builders<BsonDocument>.Filter.Ne("X", BsonNull.Value))
+                    .Find(Builders<BsonDocument>.Filter.Ne("Rank", BsonNull.Value))
                     .ToList();
 
                 // Deserialize directly using BsonSerializer
                 Companies = regularDocs
                     .Select(doc => BsonSerializer.Deserialize<Company>(doc))
+                    .OrderBy(doc => doc.Name)
                     .ToArray();
 
-                Console.WriteLine("Companies and BlankCompanies loaded successfully.");
             }
             catch (Exception ex)
             {
@@ -72,9 +73,9 @@ namespace MiniProj.Functionality
                 // Deserialize directly using BsonSerializer
                 AppliedAlreadies = bsonDocs
                     .Select(doc => BsonSerializer.Deserialize<AppliedAlready>(doc))
+                    .OrderBy(doc => doc.Name)
                     .ToArray();
 
-                Console.WriteLine("AppliedAlreadies loaded successfully.");
                 return AppliedAlreadies;
             }
             catch (Exception ex)
@@ -88,7 +89,11 @@ namespace MiniProj.Functionality
 
         public static void PrintSomething()
         {
-            Console.WriteLine(blankCompanies[1].Id);
+            foreach (Company i in blankCompanies)
+            {
+                Console.WriteLine(i.Name);
+            }
+            
 
         }
     }
