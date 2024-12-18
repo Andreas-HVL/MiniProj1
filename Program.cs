@@ -7,6 +7,8 @@ namespace MiniProj
     {
         static void Main(string[] args)
         {
+            bool running = true;
+
             try
             {
                 // Initialize runtime data
@@ -17,11 +19,13 @@ namespace MiniProj
             {
                 Console.WriteLine("The program encountered a critical error during initialization and must shut down.");
                 Console.WriteLine($"Error: {ex.Message}");
-                Environment.Exit(1); // Force the program to exit with an error code
+                Environment.Exit(1); // Force the program to exit with an error code in case of failure to init runtime data
             }
-            bool running = true;
+            
             do
             {
+                int blankIndex = 0;
+
                 Console.WriteLine("Do you want to \n1: Update at blank companies\n2: Look at updated companies\n3: Update application status\n4: Look at application status\n0: Exit");
                 var menuChoice = InputReader.SingleKey(5);
                 switch (menuChoice)
@@ -31,19 +35,23 @@ namespace MiniProj
                         break;
 
                     case '1':
-                        //MenuOptions.UpdateBlanks();
+                        Console.Clear();
+                        MenuOptions.UpdateBlanks(blankIndex);
                         break;
 
                     case '2':
-                        //MenuOptions.PrintUpdated();
+                        Console.Clear();
+                        MenuOptions.PrintUpdated();
                         break;
 
                     case '3':
-                        //MenuOptions.UpdateApplications();
+                        Console.Clear();
+                        MenuOptions.UpdateApplications();
                         break;
 
                     case '4':
-                        //MenuOptions.CheckApplications();
+                        Console.Clear();
+                        MenuOptions.CheckApplications();
                         break;
                 }
             } while (running = true);
