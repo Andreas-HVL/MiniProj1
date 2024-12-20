@@ -15,7 +15,7 @@ namespace MiniProj.Functionality
             {
                 if (Console.KeyAvailable)
                 {
-                    var key = Console.ReadKey(intercept: true); // Read the key without displaying it
+                    var key = Console.ReadKey(intercept: true);
                     if (key.Key == ConsoleKey.Q)
                     {
                         break;
