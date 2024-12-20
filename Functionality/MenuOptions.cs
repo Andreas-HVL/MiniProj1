@@ -10,7 +10,26 @@ namespace MiniProj.Functionality
     {
         public static int UpdateBlanks(int index)
         {
+            var nextTen = Loader.Blanks(index);
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(intercept: true); // Read the key without displaying it
+                    if (key.Key == ConsoleKey.Q)
+                    {
+                        break;
+                    }
+                }
 
+                Console.WriteLine("\nSelect a Company to modify (If less than 10 companies available, don't press out of index, or press Q to go back");
+                var companyChoice = InputReader.SingleKey(10);
+                var selectedCompany = nextTen[companyChoice];
+                
+
+            }
+
+            Console.Clear();
             return index + 10;
         }
 
